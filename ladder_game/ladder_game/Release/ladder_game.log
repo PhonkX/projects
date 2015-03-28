@@ -1,0 +1,6 @@
+﻿  main.cpp
+main.cpp(83): warning C4018: <: несоответствие типов со знаком и без знака
+main.cpp(85): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода
+  Создание кода завершено
+  ladder_game.vcxproj -> C:\Users\PhonkX\Documents\Visual Studio 2013\Projects\ladder_game\Release\ladder_game.exe
