@@ -1,0 +1,5 @@
+﻿  main.cpp
+c:\users\phonkx\documents\visual studio 2013\projects\graphs\graphs\main.cpp(89): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\phonkx\documents\visual studio 2013\projects\graphs\graphs\main.cpp(110): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\phonkx\documents\visual studio 2013\projects\graphs\graphs\main.cpp(191): warning C4101: ex: неиспользованная локальная переменная
+  graphs.vcxproj -> C:\Users\PhonkX\documents\visual studio 2013\Projects\graphs\Debug\graphs.exe
