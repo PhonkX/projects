@@ -1,0 +1,6 @@
+c:\users\phonkx\documents\visual studio 2013\Projects\sock_client\sock_client\bin\Debug\sock_client.exe.config
+c:\users\phonkx\documents\visual studio 2013\Projects\sock_client\sock_client\bin\Debug\sock_client.exe
+c:\users\phonkx\documents\visual studio 2013\Projects\sock_client\sock_client\bin\Debug\sock_client.pdb
+c:\users\phonkx\documents\visual studio 2013\Projects\sock_client\sock_client\obj\Debug\sock_client.exe
+c:\users\phonkx\documents\visual studio 2013\Projects\sock_client\sock_client\obj\Debug\sock_client.pdb
+C:\Users\PhonkX\Documents\Visual Studio 2013\Projects\sock_client\sock_client\obj\Debug\sock_client.csprojResolveAssemblyReference.cache

@@ -1,0 +1,6 @@
+c:\users\phonkx\documents\visual studio 2013\Projects\sockets_try\sockets_try\bin\Debug\sockets_try.exe.config
+c:\users\phonkx\documents\visual studio 2013\Projects\sockets_try\sockets_try\bin\Debug\sockets_try.exe
+c:\users\phonkx\documents\visual studio 2013\Projects\sockets_try\sockets_try\bin\Debug\sockets_try.pdb
+c:\users\phonkx\documents\visual studio 2013\Projects\sockets_try\sockets_try\obj\Debug\sockets_try.csprojResolveAssemblyReference.cache
+c:\users\phonkx\documents\visual studio 2013\Projects\sockets_try\sockets_try\obj\Debug\sockets_try.exe
+c:\users\phonkx\documents\visual studio 2013\Projects\sockets_try\sockets_try\obj\Debug\sockets_try.pdb
