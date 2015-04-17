@@ -1,0 +1,9 @@
+﻿  main.cpp
+c:\users\phonkx\documents\visual studio 2013\projects\priority queue\priority queue\main.cpp(6): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  BinHeap.cpp
+c:\users\phonkx\documents\visual studio 2013\projects\priority queue\priority queue\binheap.cpp(11): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\phonkx\documents\visual studio 2013\projects\priority queue\priority queue\binheap.cpp(52): warning C4018: <=: несоответствие типов со знаком и без знака
+c:\users\phonkx\documents\visual studio 2013\projects\priority queue\priority queue\binheap.cpp(54): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\phonkx\documents\visual studio 2013\projects\priority queue\priority queue\binheap.cpp(61): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
+  Priority queue.vcxproj -> C:\Users\PhonkX\Documents\Visual Studio 2013\Projects\Priority queue\Debug\Priority queue.exe
