@@ -1,0 +1,3 @@
+﻿  main.cpp
+c:\users\phonkx\documents\visual studio 2013\projects\math_set2\math_set2\main.cpp(8): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Math_set2.vcxproj -> C:\Users\PhonkX\Documents\Visual Studio 2013\Projects\Math_set2\Debug\Math_set2.exe
