@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\phonkx\documents\visual studio 2013\projects\dijkstra_algorithm\dijkstra_algorithm\main.cpp(73): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\phonkx\documents\visual studio 2013\projects\dijkstra_algorithm\dijkstra_algorithm\main.cpp(122): warning C4018: <: несоответствие типов со знаком и без знака
+  dijkstra_algorithm.vcxproj -> c:\users\phonkx\documents\visual studio 2013\Projects\dijkstra_algorithm\Debug\dijkstra_algorithm.exe
