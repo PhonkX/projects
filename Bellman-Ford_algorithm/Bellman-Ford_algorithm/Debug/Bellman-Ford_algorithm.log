@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\phonkx\documents\visual studio 2013\projects\bellman-ford_algorithm\bellman-ford_algorithm\main.cpp(67): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\phonkx\documents\visual studio 2013\projects\bellman-ford_algorithm\bellman-ford_algorithm\main.cpp(72): warning C4018: <=: несоответствие типов со знаком и без знака
+  Bellman-Ford_algorithm.vcxproj -> c:\users\phonkx\documents\visual studio 2013\Projects\Bellman-Ford_algorithm\Debug\Bellman-Ford_algorithm.exe
