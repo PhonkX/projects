@@ -1,0 +1,3 @@
+﻿  main.cpp
+c:\users\phonkx\documents\visual studio 2013\projects\chromatic_number\chromatic_number\main.cpp(45): warning C4101: w: неиспользованная локальная переменная
+  chromatic_number.vcxproj -> C:\Users\PhonkX\Documents\Visual Studio 2013\Projects\chromatic_number\Debug\chromatic_number.exe
