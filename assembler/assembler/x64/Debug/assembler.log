@@ -1,0 +1,47 @@
+﻿Build started 02.10.2015 12:33:09.
+     1>Project "C:\Users\PhonkX\documents\visual studio 2015\Projects\assembler\assembler\assembler.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt main.cpp main2.cpp
+         main2.cpp
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(6): error C2485: 'naked': unrecognized extended attribute
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(8): error C4235: nonstandard extension used: '__asm' keyword not supported on this architecture
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(10): error C2065: 'push': undeclared identifier
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(10): error C2146: syntax error: missing ';' before identifier 'ebp'
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(10): error C2065: 'ebp': undeclared identifier
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(10): error C2146: syntax error: missing ';' before identifier 'mov'
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(10): error C2065: 'mov': undeclared identifier
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(11): error C2065: 'esp': undeclared identifier
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(11): error C2146: syntax error: missing ';' before identifier 'mov'
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(11): error C2065: 'mov': undeclared identifier
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(11): error C2146: syntax error: missing ';' before identifier 'eax'
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(11): error C2065: 'eax': undeclared identifier
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(11): error C2143: syntax error: missing ']' before '+'
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(11): error C3481: 'ebp': lambda capture variable not found
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(11): error C3260: '+': skipping unexpected token(s) before lambda body
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(24): error C4235: nonstandard extension used: '__asm' keyword not supported on this architecture
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(25): error C2065: 'push': undeclared identifier
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(25): error C2143: syntax error: missing ';' before 'constant'
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(26): error C2146: syntax error: missing ';' before identifier 'push'
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(26): error C2065: 'push': undeclared identifier
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(26): error C2143: syntax error: missing ';' before 'constant'
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(27): error C2146: syntax error: missing ';' before identifier 'call'
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(28): error C2065: 'call': undeclared identifier
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(28): error C2146: syntax error: missing ';' before identifier 'f'
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(28): error C2146: syntax error: missing ';' before identifier 'add'
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(28): warning C4551: function call missing argument list
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(28): error C2065: 'add': undeclared identifier
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(28): error C2146: syntax error: missing ';' before identifier 'esp'
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(28): error C2065: 'esp': undeclared identifier
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(29): error C2146: syntax error: missing ';' before identifier 'mov'
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(29): error C2065: 'mov': undeclared identifier
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(29): error C2146: syntax error: missing ';' before identifier 'n'
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(30): error C2065: 'rax': undeclared identifier
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(30): error C2143: syntax error: missing ';' before '}'
+     1>c:\users\phonkx\documents\visual studio 2015\projects\assembler\assembler\main2.cpp(35): fatal error C1004: unexpected end-of-file found
+         main.cpp
+         Generating Code...
+     1>Done Building Project "C:\Users\PhonkX\documents\visual studio 2015\Projects\assembler\assembler\assembler.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:02.54
