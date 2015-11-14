@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+
+       // var scale = 1;
+       // TODO: Посмотреть сдвиг, подумать над тем, какие ширину и высоту передавать в функцию.
+        function Application() {
+            this.scale = 1.05;
+            this.root1x = 1;
+            this.root1y = 0;
+            this.root2x = Math.cos(2*Math.PI/3);
+            this.root2y = Math.sin(2*Math.PI/3);
+            this.root3x = Math.cos(-2*Math.PI/3);
+            this.root3y = Math.sin(-2*Math.PI/3);
+            this.width = 0;
+            this.height = 0;
+            this.left = 0;
+            this.right = 0;
+            this.top = 0;
+            this.bottom = 0;
+        }
+
+        Application.prototype.NewtonPool = function(startPositionX, startPositionY) {
+
+            var canvas = document.getElementById('canvas');
+            var canvasHeight = parseInt(canvas.getAttribute("height"));
+            var canvasWidth = parseInt(canvas.getAttribute("width"));
+
+            var context = canvas.getContext('2d');
+
+
+            var selection = document.getElementById('fractalType').value;
+
+            var n = document.getElementById('iterCount').value;
+            var epsilon = 0.0000001;
+
+            var left = this.left;
+            var right = this.right;
+            var top = this.top;
+            var bottom = this.bottom;
+
+            var imageData = context.createImageData(canvasWidth, canvasHeight);
+
+            for(var i = 0; i < canvasWidth; ++i) {
+                for(var j = 0; j < canvasHeight; ++j) {
+                    this.setPixel(imageData, left, right, bottom, top, canvasWidth, canvasHeight, i, j, selection, epsilon, n);
+                }
+            }
+            context.putImageData(imageData, 0, 0);
+
+        };
+
+        Application.prototype.setPixel = function(imageData, left, right, bottom, top, canvasWidth, canvasHeight, i, j, colorizingType, epsilon, n) {
+
+            var x = i * (right - left) / (canvasWidth - 1) + left;
+            var y = j * (bottom - top) / (canvasHeight - 1) + top;
+
+            var rootNumber = 0;
+
+            var k;
+            for(k = 0; k < n; ++k) {
+
+                if((x-this.root1x)*(x-this.root1x) + (y-this.root1y)*(y-this.root1y) <= epsilon){
+                    rootNumber = 1;
+                    break;
+                }
+                else
+                if((x-this.root2x)*(x-this.root2x) + (y-this.root2y)*(y-this.root2y) <= epsilon){
+                    rootNumber = 2;
+                    break;
+                }
+                else
+                if((x-this.root3x)*(x-this.root3x) + (y-this.root3y)*(y-this.root3y) <= epsilon){
+                    rootNumber = 3;
+                    break;
+                }
+
+                var tempX = x;
+                var tempY = y;
+                x = 2*tempX/3 + (tempX*tempX - tempY*tempY)/(3*(tempX*tempX + tempY*tempY)*(tempX*tempX + tempY*tempY));
+                y = 2/3*tempY*(1 - tempX/((tempX*tempX + tempY*tempY)*(tempX*tempX + tempY*tempY)));
+
+            }
+
+            var colors = this.getColors(rootNumber, colorizingType, k, n);
+
+            this.setPixelColor(imageData, canvasWidth, i, j, colors);
+        };
+
+        Application.prototype.getColors = function(rootNumber, colorizingType, k, n) {
+            var red = 0;
+            var green = 0;
+            var blue = 0;
+
+            if(colorizingType == "classic") {
+                switch (rootNumber) {
+                    case 1:
+                        red = 255;
+                        break;
+                    case 2:
+                        green = 255;
+                        break;
+                    case 3:
+                        blue = 255;
+                        break;
+                    default: break;
+                }
+            }
+
+            else
+            if (colorizingType == "levels") {
+                red = n > 1 ? 255*Math.log(1 + k)/Math.log(n) : 0;
+                green = n > 1 ? 255*Math.log(1 + k)/Math.log(n) : 0;
+                blue = n > 1 ? 255*Math.log(1 + k)/Math.log(n) : 0;
+            }
+            else
+            if (colorizingType == "zebra") {
+                if(k % 2) {
+                    red = 255;
+                    green = 255;
+                    blue = 255;
+                }
+            }
+            return {
+                red: red,
+                green: green,
+                blue: blue
+            }
+        };
+
+        Application.prototype.setPixelColor = function(imageData, canvasWidth, i, j, colors) {
+            imageData.data[4*(i + j*canvasWidth ) + 0] = colors.red;
+            imageData.data[4*(i + j*canvasWidth ) + 1] = colors.green;
+            imageData.data[4*(i + j*canvasWidth ) + 2] = colors.blue;
+            imageData.data[4*(i + j*canvasWidth ) + 3] = 255; //opacity
+        };
+
+        Application.prototype.run = function() {
+            var canvas = document.getElementById('canvas');
+            canvas.addEventListener("mousedown", this.canvasOnClick.bind(this), false);
+            this.width = parseInt(canvas.getAttribute("width"));
+            this.height = parseInt(canvas.getAttribute("height"));
+            this.left = -this.width / 2;
+            this.right = this.width / 2 - 1;
+            this.bottom = -this.height / 2;
+            this.top = this.height / 2 - 1;
+            this.NewtonPool(0,0);
+        };
+
+        Application.prototype.canvasOnClick = function(event) {
+            var canvas = document.getElementById('canvas');
+
+            var width = parseInt(canvas.getAttribute("width"));
+            var height = parseInt(canvas.getAttribute("height"));
+            var startPosition = app.getMouseClickPosition(event, canvas);
+
+            var x = startPosition.X * (this.right - this.left) / (width - 1) + this.left;
+            var y = startPosition.Y * (this.bottom - this.top) / (height - 1) + this.top;
+
+            this.width = this.width / this.scale;
+            this.height = this.height / this.scale;
+
+            this.left = x - this.width / 2;
+            this.right = x + this.width / 2 - 1;
+            this.bottom = y - this.height / 2;
+            this.top = y + this.height / 2 - 1;
+
+            this.NewtonPool(x, y);
+        };
+
+        Application.prototype.getMouseClickPosition = function(mouseEvent, canvas) {
+            var x, y;
+            if (mouseEvent.pageX != undefined && mouseEvent.pageY != undefined) {
+                x = mouseEvent.pageX;
+                y = mouseEvent.pageY;
+            } else {
+                x = mouseEvent.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+                y = mouseEvent.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+            }
+
+            return { X: x - canvas.offsetLeft, Y: y - canvas.offsetTop };
+        };
+        var app = new Application();
+
+    </script>
+</head>
+<body onload = "app.run()">
+    <input type="number" id = "iterCount" value = "100" onchange="app.run()"><br>
+    <select name="selection" id="fractalType" onchange="app.run()">
+        <option type="text" value="classic">Классическая</option>
+        <option type="text" value="levels">Уровни</option>
+        <option type="text" value="zebra">Зебра</option>
+    </select><br>
+    <canvas width = "500" height = "500" id = "canvas"></canvas>
+</body>
+</html>
