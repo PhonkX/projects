@@ -1,0 +1,30 @@
+﻿<Window x:Class="wpf_database.DetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpf_database"
+        mc:Ignorable="d"
+        Title="Описание книги" Height="377.667" Width="300" Loaded="Window_Loaded">
+    <Grid Margin="0,0,0,1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Название" HorizontalAlignment="Right" Margin="0,10,128,0" VerticalAlignment="Top" Height="25" Width="154" Grid.Column="1"/>
+        <TextBox x:Name="NameTextBox" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="20" Margin="19,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="236"/>
+        <Label Grid.ColumnSpan="2" Content="Издательство" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Height="27" Width="224"/>
+        <ComboBox x:Name="PublishComboBox" DisplayMemberPath="Название" SelectedValuePath="КИ" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="19,92,0,0" VerticalAlignment="Top" Width="236" Height="21" IsSynchronizedWithCurrentItem="True"/>
+        <Label Grid.ColumnSpan="2" Content="Авторы" HorizontalAlignment="Left" Margin="19,113,0,0" VerticalAlignment="Top" Width="236"/>
+        <ComboBox x:Name="AuthorsComboBox" DisplayMemberPath="Фамилия" SelectedValuePath="КА" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="19,171,0,0" VerticalAlignment="Top" Width="236" Height="20" SelectionChanged="AuthorsComboBox_SelectionChanged"/>
+        <Label Grid.ColumnSpan="2" Content="Год" HorizontalAlignment="Left" Margin="19,231,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="YearTextBox" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="79,234,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Grid.ColumnSpan="2" Content="Цена" HorizontalAlignment="Left" Margin="19,269,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PriceTextBox" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="79,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="SaveButton" Grid.ColumnSpan="2" Content="Сохранить" HorizontalAlignment="Left" Margin="19,316,0,0" VerticalAlignment="Top" Width="75" Click="SaveButton_Click"/>
+        <Button x:Name="CancelButton" Grid.ColumnSpan="2" Content="Отменить" HorizontalAlignment="Left" Margin="191,316,0,0" VerticalAlignment="Top" Width="75" Click="CancelButton_Click"/>
+        <TextBox x:Name="AuthorsTextBox" IsReadOnly="True" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="16" Margin="19,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="236"/>
+        <Button x:Name="ClearAuthorsButton" Grid.ColumnSpan="2" Content="Очистить список авторов" HorizontalAlignment="Left" Margin="19,206,0,0" VerticalAlignment="Top" Width="236" Click="ClearAuthorsButton_Click"/>
+
+    </Grid>
+</Window>
