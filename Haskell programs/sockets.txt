@@ -1,0 +1,8 @@
+import Network
+import System.IO
+import Control.Concurrent
+import Control.Concurrent.MVar
+
+
+main = withSocketsDo $ do
+    sock <- listen

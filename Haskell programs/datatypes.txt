@@ -1,0 +1,5 @@
+data Day = Mon | Tue | Wed | Thu | Fri | Sat | Sun
+	deriving (Eq, Ord, Enum, Bonded, Read, Show)
+
+weekend :: Day -> Bool
+	weekend d = (fromEnum d) >= 5
