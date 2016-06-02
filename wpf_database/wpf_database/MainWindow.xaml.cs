@@ -24,7 +24,7 @@ namespace wpf_database
     {
         DataTable publishDataTable = null;
         DataTable booksDataTable = null;
-       // SqlDataAdapter publishDataAdapter = null;
+        // SqlDataAdapter publishDataAdapter = null;
         DataTable authorsDataTable = null;
         string conn = @"Data Source=PHONKXPC\SQLEXPRESS;Initial Catalog=Books;Integrated Security=True";
 
@@ -70,7 +70,7 @@ namespace wpf_database
                     SqlCommandBuilder commBuilder = new SqlCommandBuilder(dataAdapter);
                     try
                     {
-                       // dt.AcceptChanges();
+                        // dt.AcceptChanges();
                         dataAdapter.Update(dt);
                     }
                     catch (DBConcurrencyException) { }
@@ -89,7 +89,7 @@ namespace wpf_database
             UpdateBooksGrid();
         }
 
-        private void UpdateBooksGrid()
+        public void UpdateBooksGrid()
         {
             booksDataTable = new DataTable();
             using (SqlConnection sc = new SqlConnection(conn))
@@ -115,8 +115,9 @@ namespace wpf_database
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            DetailWindow detailWindow = new DetailWindow();
+            DetailWindow detailWindow = new DetailWindow(this);
             detailWindow.Show();
+            UpdateBooksGrid();
         }
 
         private void OnAuthorsSelect(object sender, RoutedEventArgs e)
@@ -153,11 +154,18 @@ namespace wpf_database
         {
             if (e.Key == Key.Delete)
             {
-                var index = PublishDataGrid.SelectedIndex;
-                if (index != publishDataTable.Rows.Count)
+                try
                 {
-                    publishDataTable.Rows[index].Delete();
-                    UpdateDb(@"SELECT * FROM dbo.Издательства");
+                    var index = PublishDataGrid.SelectedIndex;
+                    if (index != publishDataTable.Rows.Count)
+                    {
+                        publishDataTable.Rows[index].Delete();
+                        UpdateDb(@"SELECT * FROM dbo.Издательства");
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Запись не может быть удалена");
                 }
             }
         }
@@ -179,10 +187,11 @@ namespace wpf_database
         {
             if (BooksDataGrid.SelectedIndex != -1)
             {
-                DetailWindow dw = new DetailWindow();
+                DetailWindow dw = new DetailWindow(this);
                 dw.FillForm(booksDataTable.Rows[BooksDataGrid.SelectedIndex]);
                 dw.BookKey = (int)booksDataTable.Rows[BooksDataGrid.SelectedIndex][0];
                 dw.Show();
+                UpdateBooksGrid();
             }
         }
 
@@ -209,6 +218,15 @@ namespace wpf_database
                 }
             }
             UpdateBooksGrid();
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (SizeToContent != SizeToContent.Manual && Width != 700)
+            {
+                SizeToContent = SizeToContent.Manual;
+                MinWidth = Width;
+            }
         }
     }
 }

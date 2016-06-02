@@ -33,10 +33,12 @@ namespace wpf_database
         private int bookYear;
         private decimal bookPrice;
         public int BookKey { get; set; }
+        private MainWindow mainW;
 
-        public DetailWindow()
+        public DetailWindow(MainWindow w)
         {
             InitializeComponent();
+            mainW = w;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -124,20 +126,43 @@ namespace wpf_database
                     comm.Parameters.Add(priceParam);
                     comm.Parameters.Add(keyParam);
                     comm.ExecuteNonQuery();
-                    foreach (var authorKey in selectedAuthorsKeys)
-                    {
-                        SqlParameter bookKeyParam = new SqlParameter("@bkey", SqlDbType.Int);
-                        bookKeyParam.Value = BookKey;
-                        SqlParameter authorKeyParam = new SqlParameter("@akey", SqlDbType.Int);
-                        authorKeyParam.Value = authorKey;
-                        update = "UPDATE dbo.КнигиАвторы SET"
-                                + "КА = @akey"
-                                + "WHERE КК = @bkey";
-                        comm = new SqlCommand(update, sc);
-                        comm.Parameters.Add(bookKeyParam);
-                        comm.Parameters.Add(authorKeyParam);
+                    
+                    selectedAuthorsKeys.Clear();
+
+                   // if (AuthorsTextBox.Text.Length == 0)
+                    //{
+                        SqlParameter keyBookParam = new SqlParameter("@key", SqlDbType.Int);
+                        keyBookParam.Value = BookKey;
+                        string delete = "DELETE FROM dbo.КнигиАвторы WHERE КК = @key";
+
+                        comm = new SqlCommand(delete, sc);
+                        comm.Parameters.Add(keyBookParam);
                         comm.ExecuteNonQuery();
+                   // }
+                    if (AuthorsTextBox.Text.Length != 0)
+                    {
+
+
+                        for (int i = 0; i < authorsDataTable.Rows.Count; ++i)
+                        {
+                            if (AuthorsTextBox.Text.Contains(authorsDataTable.Rows[i].Field<string>("Фамилия")))
+                                selectedAuthorsKeys.Add(authorsDataTable.Rows[i].Field<int>("КА"));
+                        }
+
+                        foreach (var authorKey in selectedAuthorsKeys)
+                        {
+                            SqlParameter bookKeyParam = new SqlParameter("@bkey", SqlDbType.Int);
+                            bookKeyParam.Value = BookKey;
+                            SqlParameter authorKeyParam = new SqlParameter("@akey", SqlDbType.Int);
+                            authorKeyParam.Value = authorKey;
+                            update = "INSERT INTO dbo.КнигиАвторы (КА, КК) VALUES (@akey, @bkey)";
+                            comm = new SqlCommand(update, sc);
+                            comm.Parameters.Add(bookKeyParam);
+                            comm.Parameters.Add(authorKeyParam);
+                            comm.ExecuteNonQuery();
+                        }
                     }
+                    mainW.UpdateBooksGrid();
                     Close();
                 }
             }
@@ -184,6 +209,7 @@ namespace wpf_database
                         comm.Parameters.Add(authorKeyParam);
                         comm.ExecuteNonQuery();
                     }
+                    mainW.UpdateBooksGrid();;
                     Close();
                 }
             }

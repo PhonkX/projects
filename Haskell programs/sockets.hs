@@ -23,7 +23,6 @@ handle (h, n, p) = do
     let (cmd, arg1) = span (not.isSpace) s
     let arg = dropWhile isSpace arg1
     case cmd of
-        "quit" -> hClose h
         "list" -> do
                     files <- listCommand
                     transferData h files $ length files
@@ -37,7 +36,13 @@ handle (h, n, p) = do
                         transferData h f $ length(f)
                     else do
                         transferData h [] (-1)
-        _ -> handle (h, n, p)
+                    handle (h,n,p)
+        "quit" -> hClose h
+        _ -> do 
+                hPutStrLn h "Неверная команда"
+                handle (h, n, p)
+                   
+        
 
 getFile name = do
     file <- readFile name 
